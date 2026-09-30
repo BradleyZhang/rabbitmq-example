@@ -41,7 +41,7 @@ func main() {
 	go func() {
 		for d := range msgs {
 			log.Printf("收到消息: %s\n", d.Body)
-			// fmt.Println("回复消息")
+			// log.Println("回复消息")
 			// d.Ack(false)
 		}
 	}()

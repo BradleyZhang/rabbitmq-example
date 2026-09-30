@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"mq/common"
 	"os"
@@ -19,31 +18,24 @@ func main() {
 	q, err := ch.QueueDeclare(
 		queueName, // 队列名称
 		false,     // 持久性
-		false,     // 自动删除
+		false,     // 未使用后删除
 		false,     // 排他性
 		false,     // 非阻塞
-		nil,       // 其他参数
-	)
-	if err != nil {
-		log.Fatalf("无法声明队列: %v", err)
-	}
-
+		nil)       // 其他参数
+	common.FailOnError(err, "无法声明队列")
 	// 发送消息
 	body := getMsg()
-
 	err = ch.Publish(
 		"",     // exchange
 		q.Name, // routing key
 		false,  // mandatory
 		false,  // immediate
 		amqp.Publishing{
-			Body: []byte(body),
+			ContentType: "text/plain",
+			Body:        []byte(body),
 		})
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "发送失败: %v", err)
-		return
-	}
-	fmt.Printf("发送消息: %s\n", body)
+	common.FailOnError(err, "发送消息失败")
+	log.Printf("发送消息: %s\n", body)
 }
 func getMsg() string {
 	msg := "default msg"
