@@ -67,3 +67,19 @@ $ make 4c
 ```
 
 内容：声明交换器、临时队列、队列交换器绑定
+
+### 05 路由：队列订阅交换器消息的子集
+生产者
+```bash
+$ make 5p key=info
+$ make 5p key=warning
+$ make 5p key=error
+```
+
+消费者
+```bash
+make 5c key="warning info"
+make 5c key="error warning
+```
+
+内容：direct 类型交换器，key

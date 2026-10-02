@@ -37,3 +37,13 @@ wc:
 	@mkdir -p bin
 	@go build -o ./bin/c-4 ./consumer/04-subscribe
 	@./bin/c-4
+
+5p:
+	@mkdir -p bin
+	@go build -o ./bin/p-5 ./producer/05-routing
+	@./bin/p-5 $(key)
+
+5c:
+	@mkdir -p bin
+	@go build -o ./bin/c-5 ./consumer/05-routing
+	@./bin/c-5 $(key)

@@ -19,3 +19,18 @@ func ExchangeLogs(ch *amqp.Channel) (name string) {
 	FailOnError(err, "exchange 声明失败")
 	return name
 }
+
+func ExchangeLogsDirect(ch *amqp.Channel) (name string) {
+	name = "logs_direct"
+	err := ch.ExchangeDeclare(
+		name,
+		"direct",
+		false,
+		false,
+		false,
+		false,
+		nil,
+	)
+	FailOnError(err, "exchange 声明失败")
+	return name
+}
