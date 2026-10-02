@@ -50,4 +50,13 @@ $ make wp m="process for 3 seconds ..."
 $ make wc
 ```
 
-### 发布订阅模式
+### 04 发布订阅模式
+生产者
+```bash
+$ make 4p
+```
+
+消费者
+```bash
+$ make 4c
+```

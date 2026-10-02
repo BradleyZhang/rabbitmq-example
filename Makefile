@@ -27,3 +27,13 @@ wc:
 	@mkdir -p bin
 	@go build -o ./bin/c-w ./consumer/03-work-queue
 	@./bin/c-w
+
+4p:
+	@mkdir -p bin
+	@go build -o ./bin/p-4 ./producer/04-publish
+	@./bin/p-4
+
+4c:
+	@mkdir -p bin
+	@go build -o ./bin/c-4 ./consumer/04-subscribe
+	@./bin/c-4
