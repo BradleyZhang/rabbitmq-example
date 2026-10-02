@@ -29,6 +29,9 @@ make p m=message
 make c
 ```
 
+内容：连接RabbitMQ、创建通道、声明队列
+-接收消息、确认消息
+-发送消息
 #### 02 安全模式
 生产者 
 ```bash
@@ -39,6 +42,8 @@ make sp m=message
 ```bash
 make sc
 ```
+
+内容：配置TLS
 ### 03 工作队列
 生产者
 ```bash
@@ -49,7 +54,7 @@ $ make wp m="process for 3 seconds ..."
 ```bash
 $ make wc
 ```
-
+内容：持久化：队列持久化 消息持久化、Qos公平分发
 ### 04 发布订阅模式
 生产者
 ```bash
@@ -60,3 +65,5 @@ $ make 4p
 ```bash
 $ make 4c
 ```
+
+内容：声明交换器、临时队列、队列交换器绑定

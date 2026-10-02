@@ -12,6 +12,7 @@ func main() {
 	ch := common.InitMQ()
 	defer ch.Close()
 
+	// 声明交换器
 	exChangeName := common.ExchangeLogs(ch)
 
 	// 创建临时队列（自动生成唯一名称，连接关闭后自动删除），从而只消费新消息

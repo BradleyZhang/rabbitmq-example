@@ -16,15 +16,16 @@ func main() {
 	defer ch.Close()
 
 	// 声明队列
-	q, err := common.QueueWork(ch)
+	q, err := common.QueueWork(ch) // 持久性的队列
 	common.FailOnError(err, "无法声明队列")
 
+	// 公平分发
 	err = ch.Qos(
 		1, // 预取计数为1,在确认了1条消息后，RabbitMQ才分发新消息
 		0,
 		false,
 	)
-	common.FailOnError(err, "Oos 设置失败")
+	common.FailOnError(err, "Qos 设置失败")
 	// 接收消息
 	msgs, err := ch.Consume(
 		q.Name, // 队列
