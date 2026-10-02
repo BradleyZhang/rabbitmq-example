@@ -18,7 +18,7 @@ docker compose up -d
 账号 admin
 密码 password
 
-### 简单模式
+### 01 简单模式
 生产者 
 ```bash
 make p m=message
@@ -29,7 +29,7 @@ make p m=message
 make c
 ```
 
-#### 安全模式
+#### 02 安全模式
 生产者 
 ```bash
 make sp m=message
@@ -39,4 +39,15 @@ make sp m=message
 ```bash
 make sc
 ```
+### 03 工作队列
+生产者
+```bash
+$ make wp m="process for 3 seconds ..."
+```
+
+消费者
+```bash
+$ make wc
+```
+
 ### 发布订阅模式
